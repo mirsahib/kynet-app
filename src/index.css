@@ -1,0 +1,28 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+	font-family: "PT Serif", serif;
+	font-size: 1.125rem;
+	font-weight: 300;
+	/* background: #ffff; */
+}
+.page{
+	background: #E7EDEE;
+}
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	/* color: white; */
+}
+
+img {
+
+	max-width: 100%;
+	display: block;
+}
