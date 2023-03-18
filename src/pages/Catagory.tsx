@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Catagory() {
 	return (
 		<div className="container">
@@ -116,7 +118,7 @@ export default function Catagory() {
 						<!-- feature ads list --> */}
 						<ul className="ads-menu">
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container ">
 										<div className="cardImg">
 											<img
@@ -139,10 +141,10 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container featuredCard">
 										<div className="cardImg">
 											<img
@@ -165,10 +167,10 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container">
 										<div className="cardImg">
 											<img
@@ -191,10 +193,10 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container">
 										<div className="cardImg">
 											<img
@@ -217,10 +219,10 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container">
 										<div className="cardImg">
 											<img
@@ -243,10 +245,10 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 							<li className="card">
-								<a href="" className="card-link">
+								<Link to="/items/home/1" className="card-link">
 									<div className="card-container">
 										<div className="cardImg">
 											<img
@@ -269,7 +271,7 @@ export default function Catagory() {
 											</div>
 										</div>
 									</div>
-								</a>
+								</Link>
 							</li>
 						</ul>
 						<div className="pagination">

@@ -14,7 +14,7 @@ export default function Header() {
 					<nav className="navbar">
 						<ul className="nav-menu">
 							<li className="nav-link">
-								<Link to="/signup">
+								<Link to="/auth">
 									<i
 										className="fa fa-user"
 										aria-hidden="true"
