@@ -10,12 +10,12 @@
 }
 
 
-header {
+/* header {
 	position: sticky;
 	background: var(--primary);
 	padding: .5em 0;
 	margin-bottom: 1em;
-}
+} */
 .container {
 	width: 90%;
 	max-width: 900px;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
 	return (
-		<div className="container">
+		<div className="flex items-center  max-w-screen-lg  mx-auto">
 			{/* <div className="search-bar">
 				<div className="search-field">
 					<input

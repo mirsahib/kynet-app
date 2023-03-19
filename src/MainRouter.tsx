@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import Items from "./pages/Items";
-import Publish from "./pages/Publish";
-import Catagory from "./pages/Catagory";
-import Error from "./pages/Error";
-import Auth from "./pages/Auth";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Home from "./pages/Home/Home";
+import Items from "./pages/Items/Items";
+import Publish from "./pages/Items/Publish";
+import Catagory from "./pages/Items/Catagory";
+import Error from "./pages/Misc/Error";
+import Auth from "./pages/Users/Auth";
+import Signup from "./pages/Users/Signup";
+import Login from "./pages/Users/Login";
 import Footer from "./components/Footer";
-import Item from "./pages/Item";
+import Item from "./pages/Items/Item";
 
 export default function MainRouter() {
 	return (

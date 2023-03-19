@@ -6,11 +6,11 @@ import * as path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(),tsconfigPaths()],
-  resolve:{
+  base:"./",
+  resolve: {
     alias:{
-      "@":path.resolve(__dirname,'./src/'),
-      pages:`${path.resolve(path.resolve(__dirname,'./src/pages'))}`
+      Component:path.resolve(__dirname,'./src/component')
     }
-  }
+  },
+  plugins: [react(),tsconfigPaths()],
 })
