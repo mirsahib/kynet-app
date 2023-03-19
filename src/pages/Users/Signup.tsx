@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import AuthField from "./components/AuthField";
+import SubmitBtn from "./components/SubmitBtn";
 
 export default function Signup() {
 	return (
@@ -6,25 +8,13 @@ export default function Signup() {
 			<h1>Sign Up</h1>
 			<form action="">
 				<div className="formRow">
-					<div className="fieldWrap bgWhite">
-						<input type="text" placeholder="First Name*" />
-					</div>
-					<div className="fieldWrap bgWhite">
-						<input type="text" placeholder="Last Name*" />
-					</div>
+					<AuthField label="FirstName" type={"text"} placeholder="First Name"/>
+					<AuthField label="LastName"  type={"text"} placeholder="Last Name"/>
 				</div>
-				<div className="fieldWrap bgWhite">
-					<input type="text" placeholder="Email*" />
-				</div>
-				<div className="fieldWrap bgWhite">
-					<input type="password" placeholder="Password*" />
-				</div>
-				<div className="fieldWrap bgWhite">
-					<input type="password" placeholder="Confirm password*" />
-				</div>
-				<div className="buttonContainer">
-					<button className="button button-block">Get Started</button>
-				</div>
+				<AuthField label="Email" type={"text"} placeholder="Email"/>
+				<AuthField label="Password" type={"password"} placeholder="Password"/>
+				<AuthField label="Confirm Password" type={"password"} placeholder="Confirm Password"/>
+				<SubmitBtn label="Get Started"/>
 			</form>
 		</div>
 	);
