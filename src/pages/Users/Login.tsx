@@ -1,5 +1,5 @@
-import AuthField from "./components/AuthField";
-import SubmitBtn from "./components/SubmitBtn";
+import InputField from "../../components/InputField";
+import SubmitBtn from "../../components/SubmitBtn";
 
 export default function Login() {
 	return (
@@ -7,8 +7,8 @@ export default function Login() {
 			<h1 className="my-4 text-center text-white text-3xl font-semibold">
 				Log In
 			</h1>
-			<AuthField label="Email" placeholder="Email Address" type={"text"}/>
-			<AuthField label="Password" placeholder="Password" type={"password"}/>
+			<InputField label="Email" placeholder="Email Address" type={"text"}/>
+			<InputField label="Password" placeholder="Password" type={"password"}/>
 			<SubmitBtn label="Login"/>
 		</form>
 	);
