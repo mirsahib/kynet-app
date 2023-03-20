@@ -6,8 +6,10 @@ interface ButtonGroupProps extends React.ComponentProps<"button">{
 
 export default function SubmitBtn({label,ref,...rest}:ButtonGroupProps) {
 	return (
-		<div className="buttonContainer">
-			<button ref={ref} {...rest} className="button button-block">{label}</button>
-		</div>
+		<div className="flex bg-red-500 justify-center my-6 sm:mx-3">
+				<button ref={ref} {...rest}  className="bg-green-800 w-full py-3 text-white">
+					{label}
+				</button>
+			</div>
 	);
 }

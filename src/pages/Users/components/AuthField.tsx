@@ -1,14 +1,17 @@
 import { ComponentProps } from "react";
 
-
-interface InputGroupProps extends ComponentProps<"input">{
-    label:string;
+interface InputGroupProps extends ComponentProps<"input"> {
+	label: string;
 }
 
-export default function AuthField({label,ref,...rest}:InputGroupProps) {
+export default function AuthField({ label, ref, ...rest }: InputGroupProps) {
 	return (
-		<div className="mb-5 min-h-[10%] bg-white">
-			<input ref={ref} {...rest}  className="h-10 pl-1"/>
+		<div className="bg-white mb-4 sm:mx-3">
+			<input
+				ref={ref}
+				{...rest}
+				className="pl-2 py-2 outline-none w-full"
+			/>
 		</div>
 	);
 }
