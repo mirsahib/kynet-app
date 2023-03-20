@@ -507,7 +507,7 @@
 .authForm h1{
 	font-size: 1.5em;
 	font-weight: 600;
-	color: var(--text-color);
+	/* color: var(--text-color); */
 	margin-bottom: 1em;
 }
 .formRow{
@@ -516,11 +516,9 @@
 }
 .fieldWrap{
 	padding: 0.5em;
-	margin: 1em;
+	margin: 1em 0em;
 }
-.bgWhite{
-	background: #ffff;
-}
+
 .fieldWrap input{
 	border:none;
 	outline:none;
@@ -531,9 +529,6 @@
 	display: flex;
 	margin: 1em;
 	justify-content: flex-end;
-}
-.linkWrap a{
-	color: var(--primary);
 }
 .buttonContainer{
 	display: flex;

@@ -7,8 +7,8 @@ interface InputGroupProps extends ComponentProps<"input">{
 
 export default function AuthField({label,ref,...rest}:InputGroupProps) {
 	return (
-		<div className="fieldWrap bgWhite">
-			<input ref={ref} {...rest} />
+		<div className="mb-5 min-h-[10%] bg-white">
+			<input ref={ref} {...rest}  className="h-10 pl-1"/>
 		</div>
 	);
 }
