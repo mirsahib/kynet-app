@@ -15,5 +15,9 @@ export default defineConfig({
   plugins: [react(),tsconfigPaths()],
   build:{
     sourcemap:true
+  },
+  server:{
+    host:true,
+    port:3001
   }
 })

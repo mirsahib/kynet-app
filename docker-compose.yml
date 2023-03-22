@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  kynet-server:
+    image: "kynet_server"
+    container_name: "kynet_server"
+    build: 
+      context: ./server
+    volumes:
+      - ./server:/server
+    ports:
+      - "3000:3000"
+  kynet-client:
+    image: "kynet_client"
+    container_name: "kynet_client"
+    build: 
+      context: ./client
+    volumes:
+      - ./client:/client
+    ports:
+      - "3001:3001"
+  kynet-database:
+    image: "mongo:latest"
+    container_name: "kynet_database"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: kynet
+    ports:
+      - "27017:27017"
+    volumes:
+      - kynet_db_container:/data/db
+volumes:
+  kynet_db_container:
+    
