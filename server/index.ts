@@ -1,16 +1,13 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-const app = express();
+import app from "./express"
+import dbConnection from "./database/database"
 const port = process.env.PORT || 3000
 
+const server = async()=>{
+    await dbConnection()
+    app.listen(port,()=>{
+        console.log(`Server listening on ${port}`)
+    })    
+}
+server()
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
-app.get('/api',(req,res)=>{
-    res.send('Hello')
-})
-
-app.listen(port,()=>{
-    console.log(`Server listening on ${port}`)
-})
