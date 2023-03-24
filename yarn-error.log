@@ -1,0 +1,27 @@
+Arguments: 
+  /usr/bin/node /usr/bin/yarn add bcrypt
+
+PATH: 
+  /opt/lampp/bin:/home/mirsahib/.local/bin:/home/mirsahib/miniconda3/bin:/home/mirsahib/miniconda3/condabin:/home/mirsahib/.cargo/bin:/home/mirsahib/.local/bin:/home/mirsahib/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/mirsahib/Android/Sdk/emulator:/home/mirsahib/Android/Sdk/platform-tools:/home/mirsahib/.sdkman/candidates/java/current/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.19.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:109:26)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
