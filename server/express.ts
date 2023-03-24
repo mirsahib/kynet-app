@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors'
-import userRoutes from './routes/user.routes'
-import authRoutes from './routes/auth.routes'
+import userRoutes from "./src/routes/user.routes"
+import authRoutes from './src/routes/auth.routes'
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -12,7 +12,7 @@ app.use(cors())
 app.use("/",userRoutes)
 app.use("/",authRoutes)
 
-app.get('/api',(req,res)=>{
+app.get('/test',(req,res)=>{
     res.send('Hello')
 })
 
