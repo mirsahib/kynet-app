@@ -12,6 +12,8 @@ export interface IUser {
 
 const createUser = async (userData:IUser) =>{
     userData.password = await hashedPassword(userData.password)
+    userData.created = new Date()
+    userData.updated = new Date()
     return await client?.db('kynet').collection('user').insertOne(userData)
 }
 

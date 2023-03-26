@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { findUser, IUser,verifyPassword } from "../database/repository/user.repository";
 import authSchema from "../database/schema/AuthSchema";
 import jwt from "jsonwebtoken"
+import handleError from "../util/errorHandles";
 
 const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 	try {
@@ -31,19 +32,21 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 			}
 		})
 	} catch (error) {
-		//@ts-ignore
-		res.status(500).json({message:"Something went wrong",error:error.message})
+		return res.status(500).json(handleError(error))
 	}
 };
+
+const requireSignin = (req: Request, res: Response, next: NextFunction)=>{
+	
+}
 
 const validateAuth = (req: Request, res: Response, next: NextFunction) => {
 	const { error } = authSchema.validate(req.body);
 	console.log("validation", error);
 	if (error) {
 		console.log("error");
-		return res.status(400).json({ error: error });
+		return res.status(400).json(handleError(error))
 	}
-	console.log("no error");
 	next();
 };
 
