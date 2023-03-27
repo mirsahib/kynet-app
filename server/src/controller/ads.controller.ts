@@ -21,7 +21,7 @@ interface RequestParams {
 const create = async (req: Request, res: Response) => {
 	try {
 		const ads = await createAds(req.body);
-		res.status(200).json({ message: "image upload successful", data: ads });
+		res.status(200).json({ message: "Ads publish succesfully", data: ads });
 	} catch (error) {
 		return res.status(500).json(handleError(error));
 	}
