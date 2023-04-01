@@ -8,7 +8,6 @@ const handleError = (error: unknown) => {
 		if (error.code === 11000) {
 			return {
 				error: {
-					code: error.code,
 					name: error.name,
 					message: "email address already in use",
 				},
