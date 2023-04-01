@@ -16,7 +16,7 @@ app.use("/",userRoutes)
 app.use("/",authRoutes)
 app.use("/",adsRoutes)
 
-app.get('test',(req,res)=>{
+app.get('/test',(req,res)=>{
     res.send('Hello')
 })
 
