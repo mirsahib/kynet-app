@@ -19,13 +19,13 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 		const user = await findUser(req.body);
 		if (!user) {
 			return res.status(401).json({
-				error: "User not found",
+				error: {name:'UnauthorizedError',message:"User not found"},
 			});
 		}
 		const isMatch = await verifyPassword(req.body.password, user.password);
 		if (!isMatch) {
 			return res.status(401).json({
-				error: "Email and password don't match.",
+				error: {name:'UnauthorizedError',message:"Email and password don't match."},
 			});
 		}
 		const token = jwt.sign({ _id: user._id }, config.jwtSecret);
@@ -36,10 +36,8 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 		});
 
 		return res.json({
-			token,
-			user: {
-				_id: user._id,
-			},
+			message:"Login successful",
+			id:user._id
 		});
 	} catch (error) {
 		return res.status(500).json(handleError(error));
@@ -52,7 +50,7 @@ const requireSignin = async (req: Request, res: Response, next: NextFunction) =>
 		const user = await findUserById(decoded._id)
 		if (!user) {
 			return res.status(401).json({
-				error: "User not found",
+				error: {name:'UnauthorizedError',message:"User not found"},
 			});
 		}
 		next()
