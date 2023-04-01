@@ -10,6 +10,8 @@ import Signup from "./pages/Users/Signup";
 import Login from "./pages/Users/Login";
 import Footer from "./components/Footer";
 import Item from "./pages/Items/Item";
+import ProtectedRoute from "./ProtectedRoute";
+import { isAuthenticated } from "./pages/Users/function/auth-helper";
 
 export default function MainRouter() {
 	return (
@@ -18,7 +20,14 @@ export default function MainRouter() {
 			<Routes>
 				<Route path="*" element={<Error />} />
 				<Route path="/" element={<Home />} />
-				<Route path="publish" element={<Publish />} />
+				<Route
+					path="publish"
+					element={
+						<ProtectedRoute user={isAuthenticated()}>
+							<Publish />
+						</ProtectedRoute>
+					}
+				/>
 				<Route path="auth" element={<Auth />}>
 					<Route index element={<Signup />} />
 					<Route path="signup" element={<Signup />} />
@@ -26,9 +35,9 @@ export default function MainRouter() {
 				</Route>
 				<Route path="items" element={<Items />} />
 				<Route path="items/:catagory" element={<Catagory />} />
-				<Route path="items/:catagory/:id" element={<Item/>}/>
+				<Route path="items/:catagory/:id" element={<Item />} />
 			</Routes>
-			<Footer/>
+			<Footer />
 		</>
 	);
 }

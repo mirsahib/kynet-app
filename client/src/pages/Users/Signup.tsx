@@ -3,18 +3,23 @@ import SubmitBtn from "../../components/SubmitBtn";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import ErrorComponent from "../../components/ErrorComponent";
-
-type IFormInput = {
-	firstName: string;
-	lastName: string;
-	email: string;
-	password: string;
-	cPassword: string;
-};
+import { IUser ,signIn} from "./api/api-auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-	const { register, handleSubmit, watch,formState: { errors }} = useForm<IFormInput>();
-	const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+	const { register, handleSubmit, watch,formState: { errors }} = useForm<IUser>();
+	const navigate = useNavigate()
+	const onSubmit: SubmitHandler<IUser> = async (data) =>{
+		console.log(data)
+		const response = await signIn(data)
+		if(response.error){
+			console.log(response.error)
+		}else{
+			navigate('/')
+		}
+	};
+
+
 	const pass = watch("password");
 	const cPass = watch("cPassword");
 
