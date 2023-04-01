@@ -15,6 +15,6 @@ RUN yarn install
 # Bundle app source
 COPY . /client/
 
-EXPOSE 5173
+EXPOSE 5173 3001 3002
 
 CMD [ "yarn", "run", "dev" ]
