@@ -3,11 +3,14 @@ import { BrowserRouter } from "react-router-dom";
 import MainRouter from "./MainRouter";
 import { Provider } from "react-redux";
 import store from "./store";
+import AuthProvider from "./context/AuthContext";
 function App() {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
-				<MainRouter />
+				<AuthProvider>
+					<MainRouter />
+				</AuthProvider>
 			</BrowserRouter>
 		</Provider>
 	);

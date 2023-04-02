@@ -23,7 +23,7 @@ export default function MainRouter() {
 				<Route
 					path="publish"
 					element={
-						<ProtectedRoute user={isAuthenticated()}>
+						<ProtectedRoute>
 							<Publish />
 						</ProtectedRoute>
 					}

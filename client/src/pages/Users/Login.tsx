@@ -2,22 +2,20 @@ import InputField from "../../components/InputField";
 import SubmitBtn from "../../components/SubmitBtn";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IUser, logIn } from "./api/api-auth";
-import { useNavigate } from "react-router-dom";
-import { authenticated } from "./function/auth-helper";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 
 
 export default function Login() {
 	const {register,handleSubmit} = useForm<IUser>()
-	
-	const navigate = useNavigate()
+	const {saveUser} = useContext(AuthContext)
 
 	const onSubmit:SubmitHandler<IUser> =async (data) =>{
 		console.log(data)
 		const response = await logIn(data)
 		if(!response.error){
-			console.log(response)
-			authenticated(response.id)
+			saveUser(response.id)
 		}else{
 			console.log(response)			
 		}
