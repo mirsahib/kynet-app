@@ -1,19 +1,20 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef, PropsWithRef } from "react";
 
-interface InputGroupProps extends ComponentProps<"textarea"> {
-	label: string;
-}
+interface InputGroupProps
+	extends PropsWithRef<JSX.IntrinsicElements["textarea"]> {}
 
-export default function TextAreadField({
-	label,
-	ref,
-	...rest
-}: InputGroupProps) {
-	return (
-		<div className="lg:w-[600px] mb-4 sm:mx-3">
-			<textarea {...rest} className="w-full outline-none pl-2 placeholder-slate-500"
-                ref={ref}
-			/>
-		</div>
-	);
-}
+const TextAreadField = forwardRef<HTMLTextAreaElement, InputGroupProps>(
+	({ children, ...props }, ref) => {
+		return (
+			<div className="lg:w-[600px] mb-4 sm:mx-3">
+				<textarea
+					ref={ref}
+					{...props}
+					className="w-full outline-none pl-2 placeholder-slate-500"
+				/>
+			</div>
+		);
+	}
+);
+
+export default TextAreadField

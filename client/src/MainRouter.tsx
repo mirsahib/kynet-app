@@ -23,9 +23,9 @@ export default function MainRouter() {
 				<Route
 					path="publish"
 					element={
-						<ProtectedRoute>
+						// <ProtectedRoute>
 							<Publish />
-						</ProtectedRoute>
+						// </ProtectedRoute>
 					}
 				/>
 				<Route path="auth" element={<Auth />}>
