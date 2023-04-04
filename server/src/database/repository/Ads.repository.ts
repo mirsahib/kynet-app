@@ -24,9 +24,16 @@ const findOneAds = async (id: string) => {
 		.collection("ads")
 		.findOne({ _id: objectId });
 };
+const findAdsByCatagory = async (key: string) => {
+	console.log('catagory',key)
+	return await client
+		?.db("kynet")
+		.collection("ads")
+		.find({ "catagory": key }).toArray();
+};
 
 const findAllAds = async () => {
 	return await client?.db("kynet").collection("ads").find().toArray();
 };
 
-export { createAds, findOneAds, findAllAds };
+export { createAds, findOneAds, findAllAds,findAdsByCatagory };

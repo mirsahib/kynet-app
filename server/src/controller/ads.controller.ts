@@ -4,6 +4,7 @@ import {
 	findOneAds,
     findAllAds,
 	IAds,
+	findAdsByCatagory,
 } from "../database/repository/Ads.repository";
 import handleError from "../util/errorHandles";
 import { v2 as cloudinary } from "cloudinary";
@@ -15,7 +16,8 @@ cloudinary.config({
 });
 
 interface RequestParams {
-	adsId: string;
+	adsId?: string;
+	catagory?: string;
 }
 
 const create = async (req: Request, res: Response) => {
@@ -42,7 +44,10 @@ const list = async (req: Request, res: Response) => {
 const findAdsbyId = async (req: Request<RequestParams>, res: Response,next:NextFunction) => {
 	try {
         console.log('params',req.params.adsId)
-		const ads = await findOneAds(req.params.adsId);
+		let ads = null
+		if(req.params.adsId){
+			ads = await findOneAds(req.params.adsId);
+		}
         if(!ads){
             return res.status(401).json({
 				error: "ads not found",
@@ -55,6 +60,26 @@ const findAdsbyId = async (req: Request<RequestParams>, res: Response,next:NextF
         return res.status(500).json(handleError(error));
     }
 };
+
+const findAdsbyCatagory = async (req: Request<RequestParams>, res: Response,next:NextFunction) => {
+	try {
+        console.log('params catagory',req.params.catagory)
+		let ads = null;
+		if(req.params.catagory){
+			ads = await findAdsByCatagory(req.params.catagory);
+		}
+        if(!ads){
+            return res.status(401).json({
+				error: "ads not found",
+			});
+        }
+        req.body.data = ads
+        next()
+        //res.status(200).json({ads:ads});
+	} catch (error) {
+        return res.status(500).json(handleError(error));
+    }
+}
 
 
 const uploadImage = async (
@@ -95,5 +120,6 @@ export default {
     read,
     list,
 	findAdsbyId,
+	findAdsbyCatagory,
 	uploadImage,
 };
