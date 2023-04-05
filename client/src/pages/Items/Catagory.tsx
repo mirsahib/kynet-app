@@ -1,6 +1,28 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link,useParams} from "react-router-dom";
+// import items from "../../data/item";
+import { readByCatagory } from "./api/api-item";
+import Card ,{ICard} from "./components/Card";
+
 
 export default function Catagory() {
+
+	const {catagory} = useParams()
+	const [items,setItems] = useState<ICard[]>([])
+	
+	useEffect(()=>{
+		const abortController = new AbortController()
+		const signal = abortController.signal
+		if(catagory){
+			readByCatagory(catagory,signal).then(data=>{
+				setItems(data)
+			})
+		}
+		return ()=>{
+			abortController.abort()
+		}
+	},[catagory])
+
 	return (
 		<div className="container">
 			<main role="main" className="main-container">
@@ -117,162 +139,9 @@ export default function Catagory() {
 						{/* <!-- page details -->
 						<!-- feature ads list --> */}
 						<ul className="ads-menu">
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container ">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/90"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container featuredCard">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/92"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/91"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/91"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/91"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
-							<li className="card">
-								<Link to="/items/home/1" className="card-link">
-									<div className="card-container">
-										<div className="cardImg">
-											<img
-												src="https://picsum.photos/120/91"
-												alt=""
-											/>
-										</div>
-										<div className="cardInfo">
-											<h2 className="cardTitle">
-												Sony plus 24 inch display
-											</h2>
-											<p className="cardDesc">
-												Dhaka Division,Mobile
-											</p>
-											<p className="cardPrice">
-												Tk 24234
-											</p>
-											<div className="cardUpdateTime">
-												2 min
-											</div>
-										</div>
-									</div>
-								</Link>
-							</li>
+							{items && items.map(item=>(
+								<Card key={item.id} {...item}/>
+							))}
 						</ul>
 						<div className="pagination">
 							<div className="pg-block">Prev</div>
