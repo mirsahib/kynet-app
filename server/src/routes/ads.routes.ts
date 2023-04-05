@@ -17,7 +17,7 @@ router
 		adsCtrl.create
 	);
 router.route("/api/ads/single/:adsId").get(authCtrl.requireSignin,adsCtrl.read);
-router.route("/api/ads/catagory/:catagory").get(authCtrl.requireSignin,adsCtrl.read);
+router.route("/api/ads/catagory/:catagory").get(adsCtrl.read);
 
 //@ts-ignore
 router.param("adsId", adsCtrl.findAdsbyId);

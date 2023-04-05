@@ -5,6 +5,7 @@ const AdsSchema = Joi.object({
     location:Joi.string().required(),
     title:Joi.string().required(),
     description:Joi.string().required(),
+    price:Joi.number().required(),
     image:Joi.any(),
 })
 
