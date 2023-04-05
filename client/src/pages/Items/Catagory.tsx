@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link,useParams} from "react-router-dom";
-// import items from "../../data/item";
+import { useParams} from "react-router-dom";
 import { readByCatagory } from "./api/api-item";
 import Card ,{ICard} from "./components/Card";
 
