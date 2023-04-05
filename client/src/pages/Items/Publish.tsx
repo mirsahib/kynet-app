@@ -1,7 +1,7 @@
 import InputField from "../../components/InputField";
 import TextAreadField from "../../components/TextAreaField";
 import SubmitBtn from "../../components/SubmitBtn";
-import { IPublishField, publish } from "./api/api-publish";
+import { IPublishField, publish } from "./api/api-item";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function Publish() {
@@ -38,17 +38,18 @@ export default function Publish() {
 						Choose Your Location
 					</label>
 					<select {...register("location")} required={true} className="bg-green-700 text-yellow-50 w-60">
-						<option value="dhaka">Dhaka</option>
-						<option value="chittagong">Chittagong</option>
-						<option value="sylhet">Sylhet</option>
-						<option value="barishal">Barishal</option>
-						<option value="rajshahi">Rajshahi</option>
-						<option value="rangpur">Rangpur</option>
-						<option value="mymensingh">Mymensingh</option>
+						<option value="Dhaka">Dhaka</option>
+						<option value="Chittagong">Chittagong</option>
+						<option value="Sylhet">Sylhet</option>
+						<option value="Barishal">Barishal</option>
+						<option value="Rajshahi">Rajshahi</option>
+						<option value="Rangpur">Rangpur</option>
+						<option value="Mymensingh">Mymensingh</option>
 					</select>
 				</div>
 				<InputField {...register('title')} required={true} placeholder="Please write a nice title for your ads"/>
 				<TextAreadField {...register('description')} rows={10} placeholder="Please write a description for your product"/>
+				<InputField {...register('price')} required={true} placeholder="Price . TK" type={'number'} />
 				<div className="flex flex-row mb-4 sm:mx-3">
 					<label htmlFor="" className="text-white font-semibold w-48">
 						Upload Image
