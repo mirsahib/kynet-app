@@ -16,7 +16,7 @@ router
 		adsCtrl.uploadImage,
 		adsCtrl.create
 	);
-router.route("/api/ads/single/:adsId").get(authCtrl.requireSignin,adsCtrl.read);
+router.route("/api/ads/single/:adsId").get(adsCtrl.read);
 router.route("/api/ads/catagory/:catagory").get(adsCtrl.read);
 
 //@ts-ignore

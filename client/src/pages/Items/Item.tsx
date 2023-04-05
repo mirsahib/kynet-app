@@ -1,31 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { read, readByCatagory } from "./api/api-item";
+import { ICard } from "./components/Card";
 
 export default function Item() {
+	
+	const [item,setItem] = useState<ICard>()
+	const {id} = useParams()
+
+	useEffect(()=>{
+		const abortController = new AbortController()
+		const signal = abortController.signal
+		if(id){
+			read(id,signal).then(data=>{
+				setItem(data)
+			})
+		}
+		return ()=>{
+			abortController.abort()
+		}
+	},[id])
+	
+
 	return (
 		<div className="container">
 			<div className="main-container itemContainer">
 				<div className="itemHeader">
-					<h2>OPPO A3s offer price (6/128) (New)</h2>
-					<p>Posted on 17 Mar 12:15 pm</p>
+					<h2>{item?.title}</h2>
+					<p>Posted on {item?.created}</p>
 				</div>
 				<div className="itemBody row">
 					<div className="itemMain">
 						<div className="itemBlock itemImgContainer">
-							<img src="https://picsum.photos/510/321" alt="" />
+							<img src={item?.image} alt="" />
 						</div>
-						<div className="itemBlock itemPrice">TK 2133</div>
+						<div className="itemBlock itemPrice">TK {item?.price}</div>
 						<div className="itemInfo">
-							<div className="itemLocation textColor">Location: Dhaka</div>
-							<div className="itemCatagory textColor">Catagory: Mobile</div>
+							<div className="itemLocation textColor">Location: {item?.location}</div>
+							<div className="itemCatagory textColor">Catagory: {item?.catagory}</div>
 						</div>
 						<div className="itemDesc itemBlock textColor">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Harum esse libero, magni sequi
-								officia, excepturi molestiae voluptatibus
-								aperiam praesentium eligendi eaque aspernatur
-								corrupti quasi fuga quidem necessitatibus
-								tenetur enim sunt!
+								{item?.description}
 							</p>
 						</div>
 					</div>

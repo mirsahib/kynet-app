@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export interface ICard{
-    id:string;
+    _id:string;
     catagory:string,
     location:string,
     title:string,
@@ -12,10 +12,10 @@ export interface ICard{
 	created:string
 }
 
-export default function Card({id,catagory,location,title,description,price,image,created}:ICard) {
+export default function Card({_id,catagory,location,title,description,price,image,created}:ICard) {
 	return (
 		<li className="card">
-			<Link to={`/items/${catagory}/${id}`} className="card-link">
+			<Link to={`/items/${catagory}/${_id}`} className="card-link">
 				<div className="card-container ">
 					<div className="cardImg">
 						<img src={image} alt="" />

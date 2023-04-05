@@ -139,7 +139,7 @@ export default function Catagory() {
 						<!-- feature ads list --> */}
 						<ul className="ads-menu">
 							{items && items.map(item=>(
-								<Card key={item.id} {...item}/>
+								<Card key={item._id} {...item}/>
 							))}
 						</ul>
 						<div className="pagination">
