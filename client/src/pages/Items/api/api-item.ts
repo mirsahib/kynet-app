@@ -14,6 +14,7 @@ const publish = async (data: IPublishField) => {
 		console.log("data", data);
 		const formData = new FormData();
 		let name: keyof typeof data;
+		let token = localStorage.getItem('token');
 		for (name in data) {
 			if (name === "image") {
 				formData.append(name, data[name][0]);
@@ -22,7 +23,12 @@ const publish = async (data: IPublishField) => {
 		}
 		let response = await fetch(`${config.host}/api/ads`, {
 			method: "POST",
+			credentials:'include',
+			mode:'cors',
 			body: formData,
+			headers:{
+				'Authorization': `${token}`
+			}
 		});
 		return await response.json();
 	} catch (error) {
@@ -56,7 +62,7 @@ const read = async (id: string, signal: AbortSignal) => {
 			method: "GET",
 			signal: signal,
 			headers: {
-				Accept: "application/json",
+				"Accept": "application/json",
 				"Content-Type": "application/json",
 			},
 		});
