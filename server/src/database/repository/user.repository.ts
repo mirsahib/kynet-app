@@ -23,7 +23,7 @@ const findUser = async (userData:IUser) =>{
 }
 const findUserById = async (id:string) =>{
     const userId = new ObjectId(id)
-    return await client?.db('kynet').collection('user').findOne({_id:userId})
+    return await client?.db('kynet').collection<IUser>('user').findOne({_id:userId})
 }
 
 const hashedPassword = async (password:string)=>{

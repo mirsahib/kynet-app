@@ -7,6 +7,7 @@ export interface IAds {
 	title: string;
 	description: string;
 	image: string;
+	postedBy:ObjectId
 	created?: Date;
 	updated?: Date;
 }

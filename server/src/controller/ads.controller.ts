@@ -8,6 +8,7 @@ import {
 } from "../database/repository/Ads.repository";
 import handleError from "../util/errorHandles";
 import { v2 as cloudinary } from "cloudinary";
+import { ProfileRequest } from "./auth.controller";
 
 cloudinary.config({
 	cloud_name: "dfdmsw4lg",
@@ -20,9 +21,9 @@ interface RequestParams {
 	catagory?: string;
 }
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: ProfileRequest, res: Response) => {
 	try {
-		const ads = await createAds(req.body);
+		const ads = await createAds({...req.body,postedBy:req?.userId});
 		res.status(200).json({ message: "Ads publish succesfully", data: ads });
 	} catch (error) {
 		return res.status(500).json(handleError(error));

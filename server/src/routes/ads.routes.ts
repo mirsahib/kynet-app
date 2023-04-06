@@ -11,6 +11,7 @@ router
 	.route("/api/ads")
 	.get(authCtrl.requireSignin,adsCtrl.list)
 	.post(
+		authCtrl.requireSignin,
 		upload.single("image"),
 		validation(AdsSchema),
 		adsCtrl.uploadImage,

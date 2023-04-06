@@ -9,9 +9,13 @@ import authSchema from "../database/schema/AuthSchema";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import handleError from "../util/errorHandles";
 import config from "../../config/config"
+import { ObjectId } from "mongodb";
 
 interface TokenInterface extends JwtPayload {
 	_id:string,
+}
+export interface ProfileRequest extends Request{
+	userId?:ObjectId
 }
 
 const login = async (req: Request<{}, {}, IUser>, res: Response) => {
@@ -44,7 +48,7 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 	}
 };
 
-const requireSignin = async (req: Request, res: Response, next: NextFunction) => {
+const requireSignin = async (req: ProfileRequest, res: Response, next: NextFunction) => {
 	try {
 		const decoded = jwt.verify(req.cookies.token,config.jwtSecret) as TokenInterface
 		const user = await findUserById(decoded._id)
@@ -52,6 +56,8 @@ const requireSignin = async (req: Request, res: Response, next: NextFunction) =>
 			return res.status(401).json({
 				error: {name:'UnauthorizedError',message:"User not found"},
 			});
+		}else{
+			req.userId = user._id
 		}
 		next()
 	} catch (error) {
