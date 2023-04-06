@@ -4,6 +4,7 @@ export interface IUser {
 	lastName?: string;
 	email: string;
 	password: string;
+	phone:string;
 	cPassword?: string;
 }
 
@@ -34,7 +35,9 @@ const logIn = async (data:IUser) => {
 			},
 			body: JSON.stringify(data),
 		});
-        return await response.json()
+		const {token,...res} = await response.json()
+		localStorage.setItem('token', token)
+		return res
     } catch (error) {
         console.log(error)
     }
