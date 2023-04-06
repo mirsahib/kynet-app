@@ -12,13 +12,12 @@ export default function Login() {
 	const {saveUser} = useContext(AuthContext)
 
 	const onSubmit:SubmitHandler<IUser> =async (data) =>{
-		console.log(data)
 		const response = await logIn(data)
 		if(!response.error){
 			saveUser(response.id)
-		}else{
-			console.log(response)			
 		}
+		console.log('response',response)			
+
 	};
   
 	return (
