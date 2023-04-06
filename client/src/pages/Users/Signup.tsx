@@ -49,6 +49,13 @@ export default function Signup() {
 				type={"email"}
 			/>
 			<InputField
+				{...register("phone")}
+				required={true}
+				placeholder="01X XXXXXXXX"
+				pattern="[0-9]{3}[0-9]{8}"
+				type={"tel"}
+			/>
+			<InputField
 				{...register("password")}
 				required={true}
 				placeholder="Password"
