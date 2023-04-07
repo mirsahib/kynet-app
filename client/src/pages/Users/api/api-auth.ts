@@ -11,7 +11,7 @@ export interface IUser {
 const signIn = async (data: IUser) => {
 	try {
         const {cPassword,...user} = data 
-		let response = await fetch(`${config.host}/api/users`, {
+		let response = await fetch(`/api/users`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -27,7 +27,7 @@ const signIn = async (data: IUser) => {
 
 const logIn = async (data:IUser) => {
     try {
-        let response = await fetch(`${config.host}/auth/login`, {
+        let response = await fetch(`/auth/login`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",

@@ -21,9 +21,14 @@ export default defineConfig({
     port:3001,
     proxy:{
       '/api':{
-        target:'http://172.19.0.4:3000',
+        target:'http://kynet_server:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, '/api'),
+      },
+      '/auth':{
+        target:'http://kynet_server:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/auth'),
       }
     }
   },
