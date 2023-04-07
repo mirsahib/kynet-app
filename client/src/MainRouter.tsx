@@ -28,7 +28,7 @@ export default function MainRouter() {
 						// </ProtectedRoute>
 					}
 				/>
-				<Route path="auth" element={<Auth />}>
+				<Route path="form" element={<Auth />}>
 					<Route index element={<Signup />} />
 					<Route path="signup" element={<Signup />} />
 					<Route path="login" element={<Login />} />

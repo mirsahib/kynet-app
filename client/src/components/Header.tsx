@@ -14,7 +14,7 @@ export default function Header() {
 				</div>
 				<ul className="flex gap-8 text-white">
 					<li className="font-semibold">
-						<Link to="/auth">
+						<Link to="/form">
 							<i className="fa fa-user mr-1" aria-hidden="true"></i>
 							Sign Up
 						</Link>
