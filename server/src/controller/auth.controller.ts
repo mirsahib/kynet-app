@@ -38,11 +38,10 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 			expires: expiryDate,
 			httpOnly: true,
 			secure:true,
-			sameSite:'none'
+			// sameSite:'none'
 		});
 
 		return res.json({
-			token:token,
 			message:"Login successful",
 			id:user._id
 		});
@@ -53,11 +52,8 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 
 const requireSignin = async (req: ProfileRequest, res: Response, next: NextFunction) => {
 	try {
-		let token = ''
-		if(req.headers.authorization!=undefined){
-			token = req.headers.authorization
-		}
-		const decoded = jwt.verify(token,config.jwtSecret) as TokenInterface
+		
+		const decoded = jwt.verify(req.cookies.token,config.jwtSecret) as TokenInterface
 		const user = await findUserById(decoded._id)
 		if (!user) {
 			return res.status(401).json({
