@@ -37,7 +37,7 @@ const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 		res.cookie("token", token, {
 			expires: expiryDate,
 			httpOnly: true,
-			secure:false,
+			secure:true,
 			sameSite:'none'
 		});
 
