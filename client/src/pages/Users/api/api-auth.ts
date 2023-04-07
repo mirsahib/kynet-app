@@ -35,9 +35,7 @@ const logIn = async (data:IUser) => {
 			},
 			body: JSON.stringify(data),
 		});
-		const {token,...res} = await response.json()
-		localStorage.setItem('token', token)
-		return res
+		return await response.json()
     } catch (error) {
         console.log(error)
     }
