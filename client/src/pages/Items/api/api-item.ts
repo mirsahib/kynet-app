@@ -14,7 +14,6 @@ const publish = async (data: IPublishField) => {
 		console.log("data", data);
 		const formData = new FormData();
 		let name: keyof typeof data;
-		let token = localStorage.getItem('token');
 		for (name in data) {
 			if (name === "image") {
 				formData.append(name, data[name][0]);
@@ -26,9 +25,6 @@ const publish = async (data: IPublishField) => {
 			credentials:'include',
 			mode:'cors',
 			body: formData,
-			headers:{
-				'Authorization': `${token}`
-			}
 		});
 		return await response.json();
 	} catch (error) {
