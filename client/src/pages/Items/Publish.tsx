@@ -49,7 +49,7 @@ export default function Publish() {
 				</div>
 				<InputField {...register('title')} required={true} placeholder="Please write a nice title for your ads"/>
 				<TextAreadField {...register('description')} rows={10} placeholder="Please write a description for your product"/>
-				<InputField {...register('price')} required={true} placeholder="Price . TK" type={'number'} />
+				<InputField {...register('price')} required={true} placeholder="Price . TK" type={'number'} min={0} />
 				<div className="flex flex-row mb-4 sm:mx-3">
 					<label htmlFor="" className="text-white font-semibold w-48">
 						Upload Image
