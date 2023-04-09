@@ -17,6 +17,7 @@ export default function MainRouter() {
 	return (
 		<>
 			<Header />
+			<div className="flex items-center w-96 sm:w-full max-w-screen-lg  mx-auto mb-7">
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route element={<ProtectedRoute/>}>
@@ -33,6 +34,7 @@ export default function MainRouter() {
 				<Route path="items/:catagory/:id" element={<Item />} />
 				<Route path="*" element={<Error />} />
 			</Routes>
+			</div>
 			<Footer />
 		</>
 	);
