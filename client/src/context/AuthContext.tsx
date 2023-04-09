@@ -1,15 +1,13 @@
-import React, { createContext, SetStateAction, useState } from "react";
+import React, { createContext, SetStateAction, useEffect, useState } from "react";
 import { json } from "stream/consumers";
 
 interface AuthContextInterface {
-    user:boolean|null,
-    setUser:React.Dispatch<SetStateAction<boolean|null>>
+    user:boolean,
     saveUser:(userId:string)=>void
     deleteUser:()=>void
 }
 const defaultAuthContext: AuthContextInterface = {
-    user:null,
-    setUser:()=>{},
+    user:false,
     saveUser:()=>{},
     deleteUser:()=>{},
 };
@@ -19,7 +17,14 @@ export const AuthContext = createContext<AuthContextInterface>(
 );
 
 const AuthProvider = ({ children }: { children: JSX.Element }) => {
-    const [user,setUser] = useState<boolean|null>(null)
+    const [user,setUser] = useState<boolean>(false)
+
+    useEffect(()=>{
+        const record = sessionStorage.getItem('userId')
+        if(record !=null){
+            setUser(true)
+        }
+    },[])
 
     const saveUser = (userId:string)=>{
         setUser(true)
@@ -31,7 +36,7 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
 
 	return (
-		<AuthContext.Provider value={{ user,saveUser,deleteUser,setUser }}>
+		<AuthContext.Provider value={{ user,saveUser,deleteUser }}>
 			{children}
 		</AuthContext.Provider>
 	);

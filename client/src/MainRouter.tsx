@@ -10,24 +10,17 @@ import Signup from "./pages/Users/Signup";
 import Login from "./pages/Users/Login";
 import Footer from "./components/Footer";
 import Item from "./pages/Items/Item";
-import ProtectedRoute from "./ProtectedRoute";
-import { isAuthenticated } from "./pages/Users/function/auth-helper";
+import ProtectedRoute from "./ProtectedRoutes";
 
 export default function MainRouter() {
 	return (
 		<>
 			<Header />
 			<Routes>
-				<Route path="*" element={<Error />} />
 				<Route path="/" element={<Home />} />
-				<Route
-					path="publish"
-					element={
-						// <ProtectedRoute>
-							<Publish />
-						// </ProtectedRoute>
-					}
-				/>
+				<Route element={<ProtectedRoute auth={false}/>}>
+					<Route path="publish" element={<Publish/>} />
+				</Route>
 				<Route path="form" element={<Auth />}>
 					<Route index element={<Signup />} />
 					<Route path="signup" element={<Signup />} />
@@ -36,6 +29,7 @@ export default function MainRouter() {
 				<Route path="items" element={<Items />} />
 				<Route path="items/:catagory" element={<Catagory />} />
 				<Route path="items/:catagory/:id" element={<Item />} />
+				<Route path="*" element={<Error />} />
 			</Routes>
 			<Footer />
 		</>
