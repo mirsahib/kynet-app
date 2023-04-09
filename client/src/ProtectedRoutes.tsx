@@ -1,13 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import { Circles } from "react-loader-spinner";
 
-interface IProtectedRoute {
-	auth: boolean;
-}
-
-export default function ProtectedRoutes({ auth }: IProtectedRoute) {
+export default function ProtectedRoutes() {
 	const [isloading, setIsloading] = useState(true);
 	const { user } = useContext(AuthContext);
 

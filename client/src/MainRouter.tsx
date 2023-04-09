@@ -11,6 +11,7 @@ import Login from "./pages/Users/Login";
 import Footer from "./components/Footer";
 import Item from "./pages/Items/Item";
 import ProtectedRoute from "./ProtectedRoutes";
+import Profile from "./pages/Users/Profile";
 
 export default function MainRouter() {
 	return (
@@ -18,8 +19,9 @@ export default function MainRouter() {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route element={<ProtectedRoute auth={false}/>}>
+				<Route element={<ProtectedRoute/>}>
 					<Route path="publish" element={<Publish/>} />
+					<Route path="profile" element={<Profile/>} />
 				</Route>
 				<Route path="form" element={<Auth />}>
 					<Route index element={<Signup />} />
