@@ -20,7 +20,7 @@ const publish = async (data: IPublishField) => {
 			}
 			formData.append(name, data[name]);
 		}
-		let response = await fetch(`${config.host}/api/ads`, {
+		let response = await fetch(`/api/ads`, {
 			method: "POST",
 			credentials:'include',
 			mode:'cors',
@@ -35,7 +35,7 @@ const publish = async (data: IPublishField) => {
 const readByCatagory = async (catagory: string, signal: AbortSignal) => {
 	try {
 		let response = await fetch(
-			`${config.host}/api/ads/catagory/${catagory}`,
+			`/api/ads/catagory/${catagory}`,
 			{
 				method: "GET",
 				signal: signal,
@@ -54,7 +54,7 @@ const readByCatagory = async (catagory: string, signal: AbortSignal) => {
 
 const read = async (id: string, signal: AbortSignal) => {
 	try {
-		let response = await fetch(`${config.host}/api/ads/single/${id}`, {
+		let response = await fetch(`/api/ads/single/${id}`, {
 			method: "GET",
 			signal: signal,
 			headers: {
