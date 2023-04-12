@@ -1,0 +1,3 @@
+/api*  https://kynet-server-production.up.railway.app/api/  200
+/auth*  https://kynet-server-production.up.railway.app/auth/  200
+/* /index.html 200
