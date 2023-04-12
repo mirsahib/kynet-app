@@ -20,10 +20,10 @@ const publish = async (data: IPublishField) => {
 			}
 			formData.append(name, data[name]);
 		}
-		let response = await fetch(`/api/ads`, {
+		let response = await fetch(`${config.host}/api/ads`, {
 			method: "POST",
-			credentials:'include',
-			mode:'cors',
+			credentials: "include",
+			mode: "cors",
 			body: formData,
 		});
 		return await response.json();
@@ -34,17 +34,14 @@ const publish = async (data: IPublishField) => {
 
 const readByCatagory = async (catagory: string, signal: AbortSignal) => {
 	try {
-		let response = await fetch(
-			`/api/ads/catagory/${catagory}`,
-			{
-				method: "GET",
-				signal: signal,
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
-				},
-			}
-		);
+		let response = await fetch(`${config.host}/api/ads/catagory/${catagory}`, {
+			method: "GET",
+			signal: signal,
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+		});
 		const data = await response.json();
 		return data.ads;
 	} catch (error) {
@@ -54,11 +51,11 @@ const readByCatagory = async (catagory: string, signal: AbortSignal) => {
 
 const read = async (id: string, signal: AbortSignal) => {
 	try {
-		let response = await fetch(`/api/ads/single/${id}`, {
+		let response = await fetch(`${config.host}/api/ads/single/${id}`, {
 			method: "GET",
 			signal: signal,
 			headers: {
-				"Accept": "application/json",
+				Accept: "application/json",
 				"Content-Type": "application/json",
 			},
 		});

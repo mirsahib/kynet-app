@@ -1,5 +1,5 @@
 const config = {
-    host:'http://localhost:3000'
+    host:'https://kynet-server-production.up.railway.app/'
 }
 
 export default config
