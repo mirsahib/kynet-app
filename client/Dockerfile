@@ -17,4 +17,5 @@ COPY . /client/
 
 EXPOSE 5173 3001 3002
 
-CMD [ "yarn", "run", "dev" ]
+CMD [ "yarn", "run", "build" ]
+RUN yarn start
