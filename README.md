@@ -1,6 +1,6 @@
 # Kynet
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7f66136d-7f70-40b7-a3eb-c1ebf9478915/deploy-status)](https://app.netlify.com/sites/kynet-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7f66136d-7f70-40b7-a3eb-c1ebf9478915/deploy-status?branch=production)](https://app.netlify.com/sites/kynet-app/deploys)
 
 Kynet is an advertisement platform that allows users to buy, sell, and exchange goods and services in a safe and efficient manner. Similar to other popular advertisement platforms like Bikroy, Kynet aims to connect buyers and sellers in a streamlined and user-friendly way.
 
